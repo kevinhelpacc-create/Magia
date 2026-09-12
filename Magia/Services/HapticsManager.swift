@@ -10,8 +10,7 @@ final class HapticsManager {
     private var engine: CHHapticEngine?
 
     init() {
-        let supportsHaptics = CHHapticEngine.capabilities(forHardware: .init()).supportsHaptics
-        guard supportsHaptics else { return }
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         engine = try? CHHapticEngine()
         try? engine?.start()
     }
